@@ -22,13 +22,13 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="container mx-auto">
           <div className="grid grid-cols-12 h-screen ">
-            <div className="col-span-1 sm:block sm:col-span-4 md:col-span-3 lg:col-span-3">
+            <div className=" sm:block col-span-2 md:col-span-1 lg:col-span-3">
               <LeftNavSidebar />
             </div>
-            <div className="overflow-auto no-scrollbar col-span-11 sm:col-span-8 md:col-span-9 lg:col-span-6">
+            <div className="overflow-auto no-scrollbar col-span-10  md:col-span-7 lg:col-span-6">
               {children}
             </div>
-            <div className=" hidden lg:block lg:col-span-3">
+            <div className=" hidden md:block md:col-span-4 lg:col-span-3">
               <RightSidebar />
             </div>
           </div>

@@ -3,7 +3,7 @@ import React from "react";
 const ComposeInteractions = () => {
   return (
     <div>
-      <div className="w-full flex justify-center  items-center ">
+      <div className="w-full flex justify-center  items-center  overflow-x-hidden">
         <div className=" border w-full max-w-xl px-2">
           <div className="flex p-2">
             <div>
@@ -76,35 +76,6 @@ const ComposeInteractions = () => {
               </div>
 
               <div className="flex items-center justify-center p-3 hover:bg-blue-100 rounded-full cursor-pointer">
-                <i className="fas fa-smile">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path d="M18.75 12.75h1.5a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM12 6a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 6ZM12 18a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 18ZM3.75 6.75h1.5a.75.75 0 1 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM5.25 18.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 0 1.5ZM3 12a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 3 12ZM9 3.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM12.75 12a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM9 15.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
-                  </svg>
-                </i>
-              </div>
-
-              <div className="flex items-center justify-center p-3 hover:bg-blue-100 rounded-full cursor-pointer">
-                <i className="fas fa-calendar-alt">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 0 0-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634Zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 0 1-.189-.866c0-.298.059-.605.189-.866Zm2.023 6.828a.75.75 0 1 0-1.06-1.06 3.75 3.75 0 0 1-5.304 0 .75.75 0 0 0-1.06 1.06 5.25 5.25 0 0 0 7.424 0Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </i>
-              </div>
-              <div className="flex items-center justify-center p-3 hover:bg-blue-100 rounded-full cursor-pointer">
                 <i className="fas fa-calendar-alt">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -121,7 +92,7 @@ const ComposeInteractions = () => {
                   </svg>
                 </i>
               </div>
-              <div className="flex items-center justify-center p-3 hover:bg-blue-100 rounded-full cursor-pointer">
+              <div className="hidden sm:flex items-center justify-center p-3 hover:bg-blue-100 rounded-full cursor-pointer">
                 <i className="fas fa-calendar-alt">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

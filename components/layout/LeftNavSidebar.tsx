@@ -35,7 +35,7 @@ const LeftNavSidebar = () => {
               d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
             />
           </svg>
-          <span className="ml-2">Home</span>
+          <span className="ml-2 hidden lg:block">Home</span>
         </div>
 
         <div className="hover:bg-gray-200 hover:cursor-pointer py-3 pl-3 mb-1 pr-4 w-fit flex items-center text-lg leading-6  rounded-full ">
@@ -54,7 +54,7 @@ const LeftNavSidebar = () => {
             />
           </svg>
 
-          <span className="ml-2">Explore</span>
+          <span className="ml-2 hidden lg:block">Explore</span>
         </div>
 
         <div className="hover:bg-gray-200 hover:cursor-pointer py-3 pl-3 mb-1 pr-4 w-fit flex items-center text-lg leading-6  rounded-full ">
@@ -73,7 +73,7 @@ const LeftNavSidebar = () => {
             />
           </svg>
 
-          <span className="ml-2">Notification</span>
+          <span className="ml-2 hidden lg:block">Notification</span>
         </div>
 
         <div className="hover:bg-gray-200 hover:cursor-pointer py-3 pl-3 mb-1 pr-4 w-fit flex items-center text-lg leading-6  rounded-full ">
@@ -92,7 +92,7 @@ const LeftNavSidebar = () => {
             />
           </svg>
 
-          <span className="ml-2">Messages</span>
+          <span className="ml-2 hidden lg:block">Messages</span>
         </div>
 
         <div className="hover:bg-gray-200 hover:cursor-pointer py-3 pl-3 mb-1 pr-4 w-fit flex items-center text-lg leading-6  rounded-full ">
@@ -111,7 +111,7 @@ const LeftNavSidebar = () => {
             />
           </svg>
 
-          <span className="ml-2">Lists</span>
+          <span className="ml-2 hidden lg:block">Lists</span>
         </div>
 
         <div className="hover:bg-gray-200 hover:cursor-pointer py-3 pl-3 mb-1 pr-4 w-fit flex items-center text-lg leading-6  rounded-full ">
@@ -130,7 +130,7 @@ const LeftNavSidebar = () => {
             />
           </svg>
 
-          <span className="ml-2">Bookmarks</span>
+          <span className="ml-2 hidden lg:block">Bookmarks</span>
         </div>
 
         <div className="hover:bg-gray-200 hover:cursor-pointer py-3 pl-3 mb-1 pr-4 w-fit flex items-center text-lg leading-6  rounded-full ">
@@ -149,7 +149,7 @@ const LeftNavSidebar = () => {
             />
           </svg>
 
-          <span className="ml-2">Profile</span>
+          <span className="ml-2 hidden lg:block">Profile</span>
         </div>
 
         <div className="hover:bg-gray-200 hover:cursor-pointer py-3 pl-3 mb-1 pr-4 w-fit flex items-center text-lg leading-6  rounded-full ">
@@ -168,11 +168,11 @@ const LeftNavSidebar = () => {
             />
           </svg>
 
-          <span className="ml-2">More</span>
+          <span className="ml-2 hidden lg:block">More</span>
         </div>
 
         {/* button */}
-        <button className="bg-blue-400 w-48 mt-5 hover:bg-blue-500 transition-all text-white font-bold py-3 px-4 rounded-full">
+        <button className="hidden lg:block bg-blue-400 w-48 mt-5 hover:bg-blue-500 transition-all text-white font-bold py-3 px-4 rounded-full">
           Interact
         </button>
       </nav>
@@ -187,7 +187,7 @@ const LeftNavSidebar = () => {
                 alt="profile"
               />
             </div>
-            <div className="ml-3">
+            <div className="ml-3 hidden lg:block">
               <p className="text-base leading-6 font-medium">Arvind Pandit</p>
               <p className="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
                 @arvindpndit
