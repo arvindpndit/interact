@@ -173,7 +173,7 @@ const LeftNavSidebar = () => {
 
         {/* button */}
         <button className="bg-blue-400 w-48 mt-5 hover:bg-blue-500 transition-all text-white font-bold py-3 px-4 rounded-full">
-          Tweet
+          Interact
         </button>
       </nav>
 
