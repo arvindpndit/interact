@@ -9,11 +9,9 @@ const TrendsCard: React.FC = () => {
 
       <main className="flex-col">
         <div className="flex-col mb-10">
-          <div className="px-5 text-gray-600 text-xs">
-            Trending in Indonesia
-          </div>
+          <div className="px-5 text-gray-600 text-xs">Trending in India</div>
           <div className="px-5 font-bold text-gray-500 text-lg">
-            #PetakilanKakSeto
+            #openforwork
           </div>
           <div className="px-5 text-gray-600 text-xs">1,412 Tweets</div>
         </div>
