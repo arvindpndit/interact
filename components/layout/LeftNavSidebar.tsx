@@ -1,4 +1,5 @@
 import React from "react";
+import AuthUserBtn from "../elements/AuthUserBtn";
 
 const LeftNavSidebar = () => {
   return (
@@ -177,7 +178,9 @@ const LeftNavSidebar = () => {
         </button>
       </nav>
 
-      <div className="flex items-center  hover:bg-blue-00 rounded-full p-4 mt-12 mr-2">
+      <AuthUserBtn />
+
+      {/* <div className="flex items-center  hover:bg-blue-00 rounded-full p-4 mt-12 mr-2">
         <a href="#" className="flex-shrink-0 group block">
           <div className="flex items-center">
             <div>
@@ -195,7 +198,7 @@ const LeftNavSidebar = () => {
             </div>
           </div>
         </a>
-      </div>
+      </div> */}
     </div>
   );
 };
