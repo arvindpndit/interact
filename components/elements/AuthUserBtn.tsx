@@ -15,7 +15,7 @@ const AuthUserBtn: React.FC = () => {
       </SignedIn>
       <SignedOut>
         <SignInButton mode="modal">
-          <button className="hidden lg:block bg-blue-400 w-48 mt-5 hover:bg-blue-500 transition-all text-white font-bold py-3 px-4 rounded-full">
+          <button className="hidden lg:block bg-gray-300 w-48 mt-5 hover:bg-gray-400 transition-all text-gray-800 font-bold py-3 px-4 mx-3 rounded-full">
             Sign in
           </button>
         </SignInButton>

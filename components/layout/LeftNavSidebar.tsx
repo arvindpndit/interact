@@ -173,12 +173,12 @@ const LeftNavSidebar = () => {
         </div>
 
         {/* button */}
-        <button className="hidden lg:block bg-blue-400 w-48 mt-5 hover:bg-blue-500 transition-all text-white font-bold py-3 px-4 rounded-full">
-          Interact
-        </button>
-      </nav>
+        <AuthUserBtn />
 
-      <AuthUserBtn />
+        {/* <button className="hidden lg:block bg-gray-300 w-48 mt-5 hover:bg-gray-400 transition-all text-gray-900 font-bold py-3 px-4 rounded-full">
+          Interact
+        </button> */}
+      </nav>
 
       {/* <div className="flex items-center  hover:bg-blue-00 rounded-full p-4 mt-12 mr-2">
         <a href="#" className="flex-shrink-0 group block">

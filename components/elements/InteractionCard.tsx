@@ -3,7 +3,7 @@ import React from "react";
 const InteractionCard = () => {
   return (
     <div className="flex items-center justify-center ">
-      <div className="p-4 hover:bg-gray-50 transition-all border max-w-xl cursor-pointer">
+      <div className="p-4 hover:bg-gray-100 border rounded-3xl  my-2 sm:my-3 transition-all bg-gray-50 max-w-xl cursor-pointer">
         <div className="flex justify-between ">
           <div className="flex items-center">
             <img
@@ -48,14 +48,15 @@ const InteractionCard = () => {
           </svg>
         </div>
         <p className="text-black block text-xl leading-snug mt-3">
-          “No one ever made a decision because of a number. They need a story.”
-          — Daniel Kahneman
+          "If four things are followed - having a great aim, acquiring
+          knowledge, hard work, and perseverance - then anything can be
+          achieved." - APJ Abdul Kalam
         </p>
         <img
-          className="mt-2 rounded-2xl border border-gray-100 dark:border-gray-700"
-          src="https://pbs.twimg.com/media/EpkuplDXEAEjbFc?format=jpg&name=medium"
+          className="mt-2 rounded-2xl border"
+          src="https://st.adda247.com/https://wpassets.adda247.com/wp-content/uploads/multisite/sites/5/2023/02/21150759/2t-19-1658918054.jpg"
         />
-        <p className="text-gray-500  text-base py-1 my-0.5">
+        <p className="text-gray-500  text-sm py-1 my-0.5">
           10:05 AM · Dec 19, 2020
         </p>
         <div className="border-gray-200 border border-b-0 my-1"></div>

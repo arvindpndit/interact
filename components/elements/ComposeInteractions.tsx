@@ -4,7 +4,7 @@ const ComposeInteractions = () => {
   return (
     <div>
       <div className="w-full flex justify-center  items-center  overflow-x-hidden">
-        <div className=" border w-full max-w-xl px-2">
+        <div className=" border rounded-3xl mt-2 w-full max-w-xl px-2">
           <div className="flex p-2">
             <div>
               <img

@@ -2,7 +2,7 @@ import React from "react";
 
 const TrendsCard: React.FC = () => {
   return (
-    <div className="bg-gray-50 hover:bg-gray-100 transition-all rounded-xl cursor-pointer flex-col">
+    <div className="bg-gray-50 hover:bg-gray-100 transition-all rounded-3xl cursor-pointer flex-col">
       <header className="px-5 py-3 text-lg font-bold text-black flex">
         <div className="">Trends for you</div>
       </header>
