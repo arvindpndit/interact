@@ -48,9 +48,9 @@ const InteractionCard = () => {
           </svg>
         </div>
         <p className="text-black block text-xl leading-snug mt-3">
-          "If four things are followed - having a great aim, acquiring
+          &quot;If four things are followed - having a great aim, acquiring
           knowledge, hard work, and perseverance - then anything can be
-          achieved." - APJ Abdul Kalam
+          achieved.&quot; - APJ Abdul Kalam
         </p>
         <img
           className="mt-2 rounded-2xl border"
