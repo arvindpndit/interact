@@ -54,11 +54,45 @@ export async function POST(req: Request) {
 
   console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
   console.log("Webhook body:", body);
-  console.log(eventType);
+
+  const GRAPHQL_ENDPOINT_URL = process.env.GRAPHQL_ENDPOINT_URLT;
 
   if (eventType === "user.created") {
-    return new Response("OK", { status: 200 });
+    const graphqlEndpoint = GRAPHQL_ENDPOINT_URL;
+    const username = payload.username;
+    const email = payload.email;
+
+    try {
+      const response = await fetch(graphqlEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: `
+            mutation {
+              createUser(username: "${username}", email: "${email}") {
+                id
+                username
+                email
+              }
+            }
+          `,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create user via GraphQL");
+      }
+
+      const responseData = await response.json();
+      console.log("User created via GraphQL:", responseData.data.createUser);
+    } catch (error) {
+      console.error("Error creating user via GraphQL:", error);
+      return new Response("Error occured", { status: 500 });
+    }
+
+    return new Response("User created successfully", { status: 200 });
   }
+
   if (eventType === "user.updated") {
     return new Response("OK", { status: 200 });
   }
