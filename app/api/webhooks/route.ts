@@ -84,7 +84,7 @@ export async function POST(req: Request) {
       }
 
       const responseData = await response.json();
-      console.log("User created via GraphQL:", responseData.data.createUser);
+      console.log("User created via GraphQL:", responseData);
     } catch (error) {
       console.error("Error creating user via GraphQL:", error);
       return new Response("Error occured", { status: 500 });
