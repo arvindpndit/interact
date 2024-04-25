@@ -59,7 +59,8 @@ export async function POST(req: Request) {
 
   if (eventType === "user.created") {
     const graphqlEndpoint = GRAPHQL_ENDPOINT_URL;
-    const { email_addresses, username } = evt.data;
+    const { primary_email_address_id, username } = evt.data;
+    console.log(primary_email_address_id, username);
 
     try {
       const response = await fetch(graphqlEndpoint, {
@@ -68,7 +69,7 @@ export async function POST(req: Request) {
         body: JSON.stringify({
           query: `
             mutation {
-              createUser(username: "${username}", email: "${email_addresses}") {
+              createUser(username: "${username}", email: "${primary_email_address_id}") {
                 id
                 username
                 email
