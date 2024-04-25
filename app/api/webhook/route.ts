@@ -59,8 +59,7 @@ export async function POST(req: Request) {
 
   if (eventType === "user.created") {
     const graphqlEndpoint = GRAPHQL_ENDPOINT_URL;
-    const username = payload.username;
-    const email = payload.email;
+    const { email_addresses, username } = evt.data;
 
     try {
       const response = await fetch(graphqlEndpoint, {
@@ -69,7 +68,7 @@ export async function POST(req: Request) {
         body: JSON.stringify({
           query: `
             mutation {
-              createUser(username: "${username}", email: "${email}") {
+              createUser(username: "${username}", email: "${email_addresses}") {
                 id
                 username
                 email
@@ -90,8 +89,6 @@ export async function POST(req: Request) {
       console.error("Error creating user via GraphQL:", error);
       return new Response("Error occured", { status: 500 });
     }
-
-    return new Response("User created successfully", { status: 200 });
   }
 
   if (eventType === "user.updated") {
