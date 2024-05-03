@@ -1,6 +1,42 @@
-import React from "react";
+"use client";
+import { useState } from "react";
 
 const ComposeInteractions = () => {
+  const [content, setContent] = useState<string>("");
+
+  const handlePostBtn = async () => {
+    const graphqlEndpoint = "https://interact-server.onrender.com/graphql";
+    const authorId = 8; // FIXME
+
+    try {
+      const response = await fetch(graphqlEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: `
+            mutation {
+              createInteraction(content: "${content}", authorId: ${authorId}) {
+                id
+                content
+              }
+            }
+          `,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create interaction via GraphQL");
+      }
+
+      const responseData = await response.json();
+      console.log("interaction created via GraphQL:", responseData);
+      return new Response("OK", { status: 200 });
+    } catch (error) {
+      console.error("Error creating interaction via GraphQL:", error);
+      return new Response("Error occured", { status: 500 });
+    }
+  };
+
   return (
     <div>
       <div className="w-full flex justify-center  items-center  overflow-x-hidden">
@@ -15,6 +51,8 @@ const ComposeInteractions = () => {
 
             <div className="ml-3 flex flex-col w-full ">
               <textarea
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
                 placeholder="What's happening?"
                 className="w-full text-lg resize-none outline-none h-16"
               ></textarea>
@@ -111,9 +149,12 @@ const ComposeInteractions = () => {
             </div>
 
             <div>
-              <p className="inline px-4 py-2 rounded-full font-bold text-white bg-blue-300 cursor-pointer">
+              <button
+                onClick={handlePostBtn}
+                className="inline px-4 py-2 rounded-full font-bold text-white bg-blue-300 cursor-pointer hover:bg-blue-500"
+              >
                 Post
-              </p>
+              </button>
             </div>
           </div>
         </div>
