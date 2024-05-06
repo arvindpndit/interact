@@ -1,12 +1,19 @@
 "use client";
 import { useState } from "react";
+import { useAuth } from "@clerk/nextjs";
 
 const ComposeInteractions = () => {
   const [content, setContent] = useState<string>("");
+  const { userId } = useAuth();
 
   const handlePostBtn = async () => {
+    if (!userId) {
+      alert("First Sign in to interact with others");
+      return;
+    }
+
     const graphqlEndpoint = "https://interact-server.onrender.com/graphql";
-    const authorId = 8; // FIXME
+    const authorId = userId;
 
     try {
       const response = await fetch(graphqlEndpoint, {
@@ -15,7 +22,7 @@ const ComposeInteractions = () => {
         body: JSON.stringify({
           query: `
             mutation {
-              createInteraction(content: "${content}", authorId: ${authorId}) {
+              createInteraction(content: "${content}", authorId: "${authorId}") {
                 id
                 content
               }
