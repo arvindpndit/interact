@@ -8,9 +8,6 @@ const MainContainer = () => {
       <ComposeInteractions />
 
       <InteractionCard />
-      <InteractionCard />
-      <InteractionCard />
-      <InteractionCard />
     </div>
   );
 };
