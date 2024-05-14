@@ -11,7 +11,10 @@ const InteractionCard = async () => {
     <>
       {interactionData &&
         interactionData.map((interaction) => (
-          <div className="flex items-center justify-center ">
+          <div
+            key={interaction.id}
+            className="flex items-center justify-center "
+          >
             <div className="p-4 w-full hover:bg-gray-100 border rounded-3xl  my-2 sm:my-3 transition-all bg-gray-50 max-w-xl cursor-pointer">
               <div className="flex justify-between ">
                 <div className="flex items-center">
@@ -107,6 +110,7 @@ export async function getData() {
           query Interactions {
             interactions {
               content
+              id
               author {
                 name
                 clerkId
