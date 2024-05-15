@@ -1,11 +1,22 @@
-import React from "react";
+"use client";
 
-const InteractionCard = async () => {
-  console.log("hello world");
-  const response = await getData();
-  const interactionData = response?.data?.interactions;
+import React, { useEffect, useState } from "react";
 
-  console.log(response?.data?.interactions);
+const InteractionCard = () => {
+  const [interactionData, setInteractionData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getData();
+        setInteractionData(response?.data?.interactions || []);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -100,7 +111,7 @@ export default InteractionCard;
 
 export async function getData() {
   const graphqlEndpoint = "https://interact-server.onrender.com/graphql";
-  let data = null;
+
   try {
     const response = await fetch(graphqlEndpoint, {
       method: "POST",
@@ -128,7 +139,7 @@ export async function getData() {
       throw new Error("Failed to create interaction via GraphQL");
     }
 
-    data = await response.json();
+    const data = await response.json();
     return data;
   } catch (error) {
     console.error("Error creating interaction via GraphQL:", error);
