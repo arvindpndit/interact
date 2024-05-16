@@ -1,13 +1,12 @@
 import React from "react";
-import InteractionCard from "../elements/InteractionCard";
+import InteractionContainer from "./InteractionContainer";
 import ComposeInteractions from "../elements/ComposeInteractions";
 
 const MainContainer = () => {
   return (
     <div>
       <ComposeInteractions />
-
-      <InteractionCard />
+      <InteractionContainer />
     </div>
   );
 };
