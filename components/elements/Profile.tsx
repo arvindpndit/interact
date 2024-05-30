@@ -1,24 +1,47 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import InteractionCard from "./InteractionCard";
 import Link from "next/link";
+import { useUser } from "@clerk/nextjs";
 
 const Profile = ({ userClerkId }) => {
   const [userData, setUserData] = useState(null);
+  const [showFollowBtn, setShowFollowBtn] = useState(null);
+  const { isSignedIn, user } = useUser();
+
+  const handleFollowBtn = () => {
+    if (isSignedIn && userData) {
+      console.log("user is signned in is " + user.id);
+
+      const isFollower = userData?.follower.some(
+        (follower) => follower.follower.clerkId == user.id
+      );
+      console.log(isFollower);
+      setShowFollowBtn(isFollower);
+    }
+
+    //handle if user is not following
+  };
+
+  const fetchData = async () => {
+    try {
+      const response = await getData(userClerkId);
+      console.log(response);
+      setUserData(response?.data?.user);
+      console.log(userData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getData(userClerkId);
-        console.log(response);
-        setUserData(response?.data?.user);
-        console.log(userData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
     fetchData();
-  }, []);
+  }, [userClerkId]);
+
+  useEffect(() => {
+    handleFollowBtn();
+  }, [userData, isSignedIn, user]);
 
   return (
     <div className="flex justify-center bg-white ">
@@ -53,15 +76,15 @@ const Profile = ({ userClerkId }) => {
           </div>
           <div className="flex justify-between">
             <div className="rounded-full border-4 border-white inline-block -mt-16 w-32 ml-3">
-              <img
-                className="w-32 rounded-full"
-                src="https://avatars.githubusercontent.com/u/121677260?v=4"
-              />
+              <img className="w-32 rounded-full" src={userData?.picture} />
             </div>
 
             <div>
-              <button className="rounded-full px-3 py-2 mt-3 mr-7 transition hover:bg-blue-50 inline-block border-2 border-blue-400 text-blue-400 font-bold">
-                Edit Profile
+              <button
+                onClick={handleFollowBtn}
+                className="rounded-full px-3 py-2 mt-3 mr-7 transition hover:bg-blue-50 inline-block border-2 border-blue-400 text-blue-400 font-bold"
+              >
+                {showFollowBtn ? "Following" : "Follow"}
               </button>
             </div>
           </div>
@@ -71,10 +94,12 @@ const Profile = ({ userClerkId }) => {
           </div>
           <div className="px-3 mt-3 flex">
             <p className="cursor-pointer hover:underline">
-              <span className="font-bold">679</span> Following
+              <span className="font-bold">{userData?.follower.length}</span>{" "}
+              Followers
             </p>
             <p className="ml-5 cursor-pointer hover:underline">
-              <span className="font-bold">679</span> Following
+              <span className="font-bold">{userData?.following.length}</span>{" "}
+              Following
             </p>
           </div>
           <div className="flex gap-3 mt-3 border-b pb-2">
@@ -132,6 +157,20 @@ export async function getData(clerkId) {
                   name
                   picture
                   username  
+                }
+              }
+              follower {
+                follower {
+                  name
+                  email
+                  clerkId
+                }
+              }
+              following {
+                followee {
+                  email
+                  name
+                  clerkId
                 }
               }
             }
