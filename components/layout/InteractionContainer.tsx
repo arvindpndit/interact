@@ -17,7 +17,7 @@ const InteractionContainer = () => {
     };
 
     fetchData();
-  }, []);
+  }, [interactionData]);
 
   return (
     <>

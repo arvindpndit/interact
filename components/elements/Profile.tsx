@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import InteractionCard from "./InteractionCard";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
@@ -10,38 +10,38 @@ const Profile = ({ userClerkId }) => {
   const [showFollowBtn, setShowFollowBtn] = useState(null);
   const { isSignedIn, user } = useUser();
 
-  const handleFollowBtn = () => {
+  const checkFollowerStatus = useCallback(() => {
     if (isSignedIn && userData) {
-      console.log("user is signned in is " + user.id);
-
       const isFollower = userData?.follower.some(
         (follower) => follower.follower.clerkId == user.id
       );
-      console.log(isFollower);
       setShowFollowBtn(isFollower);
     }
+  }, [isSignedIn, user, userData]);
 
-    //handle if user is not following
+  const handleFollowBtn = () => {
+    if (!showFollowBtn) {
+      followUser(user?.id, userClerkId);
+      setShowFollowBtn(true);
+    }
   };
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const response = await getData(userClerkId);
-      console.log(response);
       setUserData(response?.data?.user);
-      console.log(userData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
-
-  useEffect(() => {
-    fetchData();
   }, [userClerkId]);
 
   useEffect(() => {
-    handleFollowBtn();
-  }, [userData, isSignedIn, user]);
+    fetchData();
+  }, [fetchData]);
+
+  useEffect(() => {
+    checkFollowerStatus();
+  }, [checkFollowerStatus]);
 
   return (
     <div className="flex justify-center bg-white ">
@@ -188,6 +188,37 @@ export async function getData(clerkId) {
     return data;
   } catch (error) {
     console.error("Error creating interaction via GraphQL:", error);
+    return new Response("Error occured", { status: 500 });
+  }
+}
+
+async function followUser(followerId, followeeId) {
+  const graphqlEndpoint = "https://interact-server.onrender.com/graphql";
+
+  try {
+    const response = await fetch(graphqlEndpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query: `               
+          mutation FollowUser($followerId: String!, $followeeId: String!) {
+            followUser(followerId: $followerId, followeeId: $followeeId) {
+              id
+            }
+          }
+        `,
+        variables: { followeeId, followerId },
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to follow via GraphQL");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error following via GraphQL:", error);
     return new Response("Error occured", { status: 500 });
   }
 }
